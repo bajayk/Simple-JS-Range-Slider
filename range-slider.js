@@ -24,25 +24,40 @@ class RangeSlider {
     // Handle pressed handler
     on_handle_pressed(e) {
 
+        // Get the pressed handle DOM
         this.handle = e.currentTarget;
+        
+        // Bind this class to move and up handlers. So in up handler it can be removable.
         this.binded_on_handle_move = this.on_handle_move.bind(this);
         this.binded_on_handle_up = this.on_handle_up.bind(this);
+
+        // Add mouse move and mouse up event to document to move slider handle and stop handle.
         document.addEventListener("mousemove", this.binded_on_handle_move);
         document.addEventListener("mouseup", this.binded_on_handle_up);
 
     }
 
+    // Handle move handler
     on_handle_move(e) {
+
+        // Get the movement X of mouse pointer
         var movementX = e.movementX;
+
+        // Get the handle current relative position
         var left = this.handle.offsetLeft;
+
+        // Add mouse x movement and handle left postion
         left = left + movementX;
 
+        // Set the value to handle x position
         if (left >= this.minbound && left <= this.maxbound) {
             this.handle.style.left = left + "px";
         }
     }
 
+    // Handle stop handler
     on_handle_up(e) {
+        // Stop handle movement by removing events from document.
         document.removeEventListener("mousemove", this.binded_on_handle_move);
         document.removeEventListener("mouseup", this.binded_on_handle_up);
     }
