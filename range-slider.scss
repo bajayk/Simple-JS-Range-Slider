@@ -1,0 +1,32 @@
+.range-slider{
+    position: absolute;
+    width: 400px;
+    background-color:#f0f0f0;
+    border-radius: 18px;
+
+    .inner-container{
+        position: relative;
+        width: 100%;
+        height: 35px;
+        .handle{
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            top:0px;
+            left:0px;
+            border-radius: 100%;
+            background-color:rgb(192, 192, 192);
+            cursor: pointer;
+        }
+
+        .slider-bar{
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            margin-top:15px;
+            background-color:rgb(90, 90, 90);
+        }
+
+    }
+
+}
