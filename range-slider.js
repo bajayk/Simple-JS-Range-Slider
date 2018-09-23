@@ -5,10 +5,19 @@ class RangeSlider {
     constructor(options) {
         this.id = options.id;
         this.element = document.getElementById(this.id);
-        this.slider_bar = this.element.getElementsByClassName("slider-bar")[0];
+
+        // Get the slider handle
         this.handle = this.element.getElementsByClassName("handle")[0];
+
+        // Add mouse down event to slider handle
         this.handle.addEventListener("mousedown", this.on_handle_pressed.bind(this));
+
+        // Set minimum and maximum bound of moving handle.
+        // Minimum bound will be 0. So handle will not go outside of the slider from left side      
         this.minbound = 0;
+
+        // Maximum bound should be set as witdth of the range slider minus handle width. So handle 
+        // will not go outside of the slider from right side.
         this.maxbound = this.element.getBoundingClientRect().width - this.handle.getBoundingClientRect().width;
     }
 
